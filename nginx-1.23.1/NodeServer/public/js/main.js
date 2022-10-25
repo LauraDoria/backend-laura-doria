@@ -1,1 +1,0 @@
-console.log('Recursos estáticos desde NGINX');

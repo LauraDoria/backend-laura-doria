@@ -1,1 +1,0 @@
-2022/10/17 16:47:40 [error] 15356#6464: *1 CreateFile() "C:\Users\pc\Documents\Digital\ProgramasCursos\Coderhouse\Backend\proyectoFinalBackend\nginx-1.23.1/html/favicon.ico" failed (2: El sistema no puede encontrar el archivo especificado), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
