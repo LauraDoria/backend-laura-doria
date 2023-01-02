@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- fuente para titulos, menu, botones y links -->
+        <!-- <link rel="stylesheet" href="https://use.typekit.net/ltv7aza.css"> -->
+        <!-- fuente para textos -->
+        <!-- <link rel="stylesheet" href="https://use.typekit.net/qqp3hjl.css"> -->
+        <!-- Archivo CSS -->
+        <!-- <link rel="stylesheet" href="../style.css"> -->
+        <title>Product Gallery</title>
+    </head>
+    <body>
+        <main>
+            <% if (<%=unitsTotal%>) { %>
+                <%- include('./partials/navbarAuth.ejs'); %>
+            <% } else { %>
+                <%- include('./partials/navbar.ejs'); %>   
+            <% } %>
+            <h1>* Productos *</h1>
+            <ul>
+                <% products.forEach(product => { %>
+                    <li>
+                        <div>
+                            <picture><img src="<%=product.thumbnail%>" alt="<%=product.name%>"></img></picture>
+                            <h2><%=product.name%></h2>
+                            <p>$ <%=product.price%></p>
+                            <p>$ <%=product.presentation%></p>
+                            <a href="/shop/products/<%=product.idNumber%>"><button>Ver Detalles</button></a>
+                        </div> 
+                    </li>
+                <% }) %> 
+            </ul>
+            <%- include('./partials/footer.ejs'); %>
+        </main>
+    </body>
+</html>

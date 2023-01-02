@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- fuente para titulos, menu, botones y links -->
+        <!-- <link rel="stylesheet" href="https://use.typekit.net/ltv7aza.css"> -->
+        <!-- fuente para textos -->
+        <!-- <link rel="stylesheet" href="https://use.typekit.net/qqp3hjl.css"> -->
+        <!-- Archivo CSS -->
+        <!-- <link rel="stylesheet" href="../style.css"> -->
+        <title>Users Admin</title>
+    </head>
+    <body>
+        <main>
+            <%- include('./partials/navbarAuth.ejs'); %>
+            <!-- Obtener usuario por Id -->
+            <form action="/admin/:adminId/users/:userId" method="post">
+                <h2>* Buscar usuario *</h2>
+                <hr>
+                <p>Ingrese número de "id" del usuario:</p>
+                <input name="idNumber" type="number" placeholder="Número de id del usuario">
+                <input type="submit" value="Buscar">
+            </form>
+            <hr>
+            <!-- Obtener listado de usuarios -->
+            <form action="/admin/:adminId/users/all" method="put">
+                <h2>* Mostrar listado de usuarios *</h2>
+                <hr>
+                <input type="submit" value="Buscar todos">
+            </form>
+            <hr>
+            <!-- Modificar permisos de usuario -->
+            <form action="/admin/:adminId/users/:userId" method="put">
+                <h2>* Modificar permisos de usuario *</h2>
+                <hr>
+                <p>Ingrese número de "id" del usuario:</p>
+                <input name="id" type="number" placeholder="Número de id del usuario">
+                <p>Permiso de administrador:</p>
+                <select name="isAdmin" type="select" placeholder="Es administrador?">
+                    <option value="0">No</option>
+                    <option value="1">sí</option>
+                </select>
+                <input type="submit" value="Guardar cambios">
+            </form>
+            <hr>
+            <!-- Eliminar usuario -->
+            <form action="/admin/:adminId/users/:userId" method="delete">
+                <h2>* Eliminar un usuario *</h2>
+                <hr>
+                <p>Ingrese número de "id" del producto:</p>
+                <input name="id" type="number" placeholder="Número de id del usuario">
+                <input type="submit" value="Eliminar">
+            </form>
+            <!-- Eliminar listado de usuarios -->
+            <form action="/admin/:adminId/users/all" method="delete">
+                <h2>* Eliminar listado de usuarios *</h2>
+                <hr>
+                <input type="submit" value="Eliminar todos">
+            </form>
+            <div>
+                <p><%-message%></p>
+            </div>
+            <%- include('./partials/footer.ejs'); %>
+        </main>
+    </body>
+</html>

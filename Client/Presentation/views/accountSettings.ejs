@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- fuente para titulos, menu, botones y links -->
+        <!-- <link rel="stylesheet" href="https://use.typekit.net/ltv7aza.css"> -->
+        <!-- fuente para textos -->
+        <!-- <link rel="stylesheet" href="https://use.typekit.net/qqp3hjl.css"> -->
+        <!-- Archivo CSS -->
+        <!-- <link rel="stylesheet" href="../style.css"> -->
+        <title>Account Settings</title>
+    </head>
+    <body>
+        <main>
+            <%- include('./partials/navbarAuth.ejs'); %>
+            <!-- Modificar la cuenta -->
+            <form action="/user/:userId/settings" method="post">
+                <h2>* Modificar tu cuenta *</h2>
+                <hr>
+                <p>Username:</p>
+                <input name="username" type="text" placeholder="Nuevo username">
+                <p>Nombre:</p>
+                <input name="name" type="text" placeholder="Nuevo nombre">
+                <p>Email:</p>
+                <input name="email" type="text" placeholder="Nuevo email">
+                <p>Contraseña:</p>
+                <input name="password" type="password" placeholder="Nueva contraseña">
+                <input type="submit" value="Guardar cambios">
+            </form>
+            <hr>
+            <!-- Eliminar la cuenta -->
+            <form action="/user/:userId/settings" method="delete">
+                <h2>* Eliminar tu cuenta *</h2>
+                <hr>
+                <input type="submit" value="Eliminar todos">
+            </form>
+            <div>
+                <p><%-message%></p>
+            </div>
+            <%- include('./partials/footer.ejs'); %>
+        </main>
+    </body>
+</html>

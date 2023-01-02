@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- fuente para titulos, menu, botones y links -->
+        <!-- <link rel="stylesheet" href="https://use.typekit.net/ltv7aza.css"> -->
+        <!-- fuente para textos -->
+        <!-- <link rel="stylesheet" href="https://use.typekit.net/qqp3hjl.css"> -->
+        <!-- Archivo CSS -->
+        <!-- <link rel="stylesheet" href="../style.css"> -->
+        <title>User Home</title>
+    </head>
+    <body>
+        <main>
+            <%- include('./partials/navbarAuth.ejs'); %>
+            <h1>* Bienvenido, <%-name%>!*</h1>
+            <div>
+                <a href='/user/:userId/messages'>
+                    <button>Mis mensajes</button>
+                </a>
+                <a href='/user/:userId/settings'>
+                    <button>Configuración</button>
+                </a>
+                <form action="/user/:userId/logout" method="post">
+                    <input type="submit" value="Cerrar sesión">
+                </form>
+            </div>
+            <% if (cart.length === 0) { %>
+                <div>
+                    <h2>* Tu Carrito *</h2>
+                    <div>
+                        <h3>Tu Carrito está vacío!</h3>
+                        <img src='../images/music-toggle-play-to-pause.svg' alt='imagen logo' />
+                        <a href='/shop/products/gallery'>
+                            <button>Volver a Productos</button>
+                        </a>
+                    </div> 
+                </div>
+            <%} else { %>
+                <div>
+                    <h1>* Tu Carrito *</h1>
+                    <div>
+                        <p><%-message%></p>
+                    </div>
+                    <ul>
+                        <% cart.forEach(product => { %>
+                            <li>
+                                <div>
+                                    <div>
+                                        <div><h3>Producto</h3></div>
+                                        <div><h3>Cantidad</h3></div>
+                                        <div><h3>Subtotal</h3></div>
+                                        <div></div>
+                                    </div>
+                                    <hr />
+                                    <div>
+                                        <div><p><%=product.name%> | <%=product.presentation%></p></div>
+                                        <div><p><%=product.productQuantity%></p></div>
+                                        <div><p>$<%=product.price%></p></div>
+                                    </div>        
+                                </div>
+                                <form action="/user/:userId/cart/:productId" method="delete">
+                                    <input type="submit" value="<%=product.id%>">X</input>
+                                </form>
+                            </li>
+                        <% }); %>
+                        <div>
+                            <div>
+                                <div><h3>Total Unidades</h3></div>
+                                <div><h3>Total</h3></div>
+                            </div>
+                            <hr />
+                            <div>
+                                <div><p><%=unitsTotal%></p></div>
+                                <div><p>$<%=total%></p></div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href='/user/:userId/shop/form'>
+                                <button>Comprar</button>
+                            </a>
+                            <form action="/user/:userId/cart/all" method="delete">
+                                <button type="submit">Vaciar Carrito</button>
+                            </form>
+                        </div>
+                    </ul>
+                </div>
+            <% } %>
+            <%- include('./partials/footer.ejs'); %>
+        </main>
+    </body>
+</html>

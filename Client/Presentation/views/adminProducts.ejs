@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- fuente para titulos, menu, botones y links -->
+        <!-- <link rel="stylesheet" href="https://use.typekit.net/ltv7aza.css"> -->
+        <!-- fuente para textos -->
+        <!-- <link rel="stylesheet" href="https://use.typekit.net/qqp3hjl.css"> -->
+        <!-- Archivo CSS -->
+        <!-- <link rel="stylesheet" href="../style.css"> -->
+        <title>Product Admin</title>
+    </head>
+    <body>
+        <main>
+            <%- include('./partials/navbarAuth.ejs'); %>
+            <!-- Cargar nuevo producto -->
+            <form action="/admin/:adminId/products" method="post">
+                <h2>* Cargar un producto *</h2>
+                <hr>
+                <p>Nombre del producto:</p>
+                <input name="productName" type="text" placeholder="Nombre del producto">
+                <p>Código del producto:</p>
+                <input name="productCode" type="text" placeholder="Código del producto">
+                <p>Stock:</p>
+                <input name="productStock" type="number" placeholder="Unidades disponibles">
+                <p>Precio unitario:</p>
+                <input name="productPrice" type="number" placeholder="Precio unitario">
+                <p>Tipo de producto:</p>
+                <select name="productType" type="select" placeholder="Selecciona">
+                    <option value="productoCapilar">Producto Capilar</option>
+                    <option value="productoFacial">Producto Facial</option>
+                    <option value="productoCorporal">Producto Corporal</option>
+                </select>
+                <p>Tipo de piel:</p>
+                <select name="productSkinType" type="select" placeholder="Selecciona">
+                    <option value="grasa">Grasa</option>
+                    <option value="seca">Seca</option>
+                    <option value="sensible">Sensible</option>
+                    <option value="madura">Madura</option>
+                    <option value="todos">Todos</option>
+                    <option value="no disponible">No disponible</option>
+                </select>
+                <p>Tipo de cabello:</p>
+                <select name="productHairType" type="select" placeholder="Selecciona">
+                    <option value="graso">Graso</option>
+                    <option value="seco">Seco</option>
+                    <option value="todos">Todos</option>
+                    <option value="no disponible">No disponible</option>
+                </select>
+                <p>Uso:</p>
+                <select name="productFunction" type="select" placeholder="Selecciona">
+                    <option value="limpieza">Limpieza</option>
+                    <option value="nutrición">Nutrición</option> 
+                    <option value="hidratación">Hidratación</option>
+                    <option value="otros">Otros</option>
+                </select>
+                <p>Zero Waste:</p>
+                <select name="productZeroWaste" type="select" placeholder="Selecciona">
+                    <option value="SI">SI</option>
+                    <option value="NO">NO</option>         
+                </select>
+                <p>Formato de presentación:</p>
+                <input name="productPresentation" type="text" placeholder="Presentación">
+                <p>Agrega una descripción (máx. 360 carácteres):</p>
+                <input name="productDescription" type="text" placeholder="Descripción">
+                <p>Modo de uso (máx. 360 carácteres):</p>
+                <input name="productInstructions" type="text" placeholder="Modo de uso">
+                <p>Formulación (máx. 550 carácteres):</p>
+                <input name="productInci" type="text" placeholder="Formulación">
+                <p>Imagen galería:</p>
+                <input name="productThumbnail" type="text" placeholder="Carga tu imagen">
+                <p>Imagen detalle:</p>
+                <input name="productThumbnailBig" type="text" placeholder="Carga tu imagen">
+                <input type="submit" value="Crear">
+            </form>
+            <hr>
+            <!-- Modificar producto (stock/precio) -->
+            <form action="/admin/:adminId/products/:productId" method="put">
+                <h2>* Modificación Rápida *</h2>
+                <hr>
+                <p>Ingrese número de "id" del producto:</p>
+                <input name="idNumber" type="number" placeholder="Número de id del producto">
+                <p>Stock:</p>
+                <input name="productStock" type="number" placeholder="Unidades disponibles">
+                <p>Precio unitario:</p>
+                <input name="productPrice" type="number" placeholder="Precio unitario">
+                <input type="submit" value="Guardar cambios">
+            </form>
+            <hr>
+            <!-- Modificar producto -->
+            <form action="/admin/:adminId/products/:productId" method="put">
+                <h2>* Modificar un producto *</h2>
+                <hr>
+                <p>Ingrese número de "id" del producto:</p>
+                <input name="idNumber" type="number" placeholder="Número de id del producto">
+                <p>Nombre del producto:</p>
+                <input name="productName" type="text" placeholder="Nombre del producto">
+                <p>Código del producto:</p>
+                <input name="productCode" type="text" placeholder="Código del producto">
+                <p>Stock:</p>
+                <input name="productStock" type="number" placeholder="Unidades disponibles">
+                <p>Precio unitario:</p>
+                <input name="productPrice" type="number" placeholder="Precio unitario">
+                <p>Tipo de producto:</p>
+                <select name="productType" type="select" placeholder="Selecciona">
+                    <option value="productoCapilar">Producto Capilar</option>
+                    <option value="productoFacial">Producto Facial</option>
+                    <option value="productoCorporal">Producto Corporal</option>
+                </select>
+                <p>Tipo de piel:</p>
+                <select name="productSkinType" type="select" placeholder="Selecciona">
+                    <option value="grasa">Grasa</option>
+                    <option value="seca">Seca</option>
+                    <option value="sensible">Sensible</option>
+                    <option value="madura">Madura</option>
+                    <option value="todos">Todos</option>
+                    <option value="no disponible">No disponible</option>
+                </select>
+                <p>Tipo de cabello:</p>
+                <select name="productHairType" type="select" placeholder="Selecciona">
+                    <option value="graso">Graso</option>
+                    <option value="seco">Seco</option>
+                    <option value="todos">Todos</option>
+                    <option value="no disponible">No disponible</option>
+                </select>
+                <p>Uso:</p>
+                <select name="productFunction" type="select" placeholder="Selecciona">
+                    <option value="limpieza">Limpieza</option>
+                    <option value="nutrición">Nutrición</option> 
+                    <option value="hidratación">Hidratación</option>
+                    <option value="otros">Otros</option>
+                </select>
+                <p>Zero Waste:</p>
+                <select name="productZeroWaste" type="select" placeholder="Selecciona">
+                    <option value="SI">SI</option>
+                    <option value="NO">NO</option>         
+                </select>
+                <p>Formato de presentación:</p>
+                <input name="productPresentation" type="text" placeholder="Presentación">
+                <p>Agrega una descripción (máx. 360 carácteres):</p>
+                <input name="productDescription" type="text" placeholder="Descripción">
+                <p>Modo de uso (máx. 360 carácteres):</p>
+                <input name="productInstructions" type="text" placeholder="Modo de uso">
+                <p>Formulación (máx. 550 carácteres):</p>
+                <input name="productInci" type="text" placeholder="Formulación">
+                <p>Imagen galería:</p>
+                <input name="productThumbnail" type="text" placeholder="Carga tu imagen">
+                <p>Imagen detalle:</p>
+                <input name="productThumbnailBig" type="text" placeholder="Carga tu imagen">
+                <input type="submit" value="Guardar cambios">
+            </form>
+            <hr>
+            <!-- Eliminar producto -->
+            <form action="/admin/:adminId/products/:productId" method="delete">
+                <h2>* Eliminar un producto *</h2>
+                <hr>
+                <p>Ingrese número de "id" del producto:</p>
+                <input name="idNumber" type="number" placeholder="Número de id del producto">
+                <input type="submit" value="Eliminar">
+            </form>
+            <!-- Eliminar listado de productos -->
+            <form action="/admin/:adminId/products/all" method="delete">
+                <h2>* Eliminar listado de productos *</h2>
+                <hr>
+                <input type="submit" value="Eliminar todos">
+            </form>
+            <div>
+                <p><%-message%></p>
+            </div>
+            <%- include('./partials/footer.ejs'); %>
+        </main>
+    </body>
+</html>

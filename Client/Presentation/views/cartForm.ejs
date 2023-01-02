@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- fuente para titulos, menu, botones y links -->
+        <!-- <link rel="stylesheet" href="https://use.typekit.net/ltv7aza.css"> -->
+        <!-- fuente para textos -->
+        <!-- <link rel="stylesheet" href="https://use.typekit.net/qqp3hjl.css"> -->
+        <!-- Archivo CSS -->
+        <!-- <link rel="stylesheet" href="../style.css"> -->
+        <title>Cart Form</title>
+    </head>
+    <body>
+        <main>
+            <%- include('./partials/navbarAuth.ejs'); %>
+            <!-- Formulario de compra -->
+            <form action="/user/:userId/shop/form" method="post">
+                <h2>* Formulario de compra *</h2>
+                <hr>
+                <p>Nombre:</p>
+                <input name="name" type="text" placeholder="Nombre">
+                <p>Apellido:</p>
+                <input name="surname" type="text" placeholder="Apellido">
+                <p>Email:</p>
+                <input name="email" type="email" placeholder="Email">
+                <p>Dirección:</p>
+                <input name="adress" type="text" placeholder="Dirección">
+                <p>Localidad:</p>
+                <input name="locality" type="text" placeholder="localidad">
+                <p>Provincia:</p>
+                <input name="province" type="text" placeholder="Provina">
+                <p>Código Postal:</p>
+                <input name="postCode" type="number" placeholder="Código postal">
+                <p>Teléfono:</p>
+                <input name="phoneNumber" type="number" placeholder="Teléfono">
+                <input type="submit" value="Comprar">
+            </form>
+            <div>
+                <p><%-message%></p>
+            </div>
+            <%- include('./partials/footer.ejs'); %>
+        </main>
+    </body>
+</html>
